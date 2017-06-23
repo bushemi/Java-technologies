@@ -1,5 +1,7 @@
 package hibernate.services;
 
+import hibernate.dao.DragonDAO;
+import hibernate.dao.ElephantDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,8 +15,9 @@ import java.util.List;
 public class DBService {
     private SessionFactory factory;
     private static DBService instance;
-    private Session session;
     private List list = new ArrayList();
+    private ElephantDAO elDAO;
+    private DragonDAO  draDAO;
 
 
     private DBService() {

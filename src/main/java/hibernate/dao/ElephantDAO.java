@@ -1,6 +1,6 @@
 package hibernate.dao;
 
-import hibernate.entities.Dragon;
+import hibernate.entities.Elephant;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,57 +13,58 @@ import java.util.List;
 /**
  * Created by root on 23.06.17.
  */
-public class DragonDAO implements AbstractDAO<Dragon> {
-    private Dragon dragon;
+public class ElephantDAO implements AbstractDAO<Elephant> {
+    private Elephant elephant;
+    private List<Elephant> list = new ArrayList<>();
     private SessionFactory factory;
-    private List<Dragon> list = new ArrayList<>();
 
-    public DragonDAO(SessionFactory factory) {
+    public ElephantDAO(SessionFactory factory) {
         this.factory = factory;
     }
 
     @Override
-    public void save(Dragon dragon) throws RuntimeException {
+    public void save(Elephant elephant) throws RuntimeException {
+
         try (Session session = factory.openSession()) {
 
             Transaction transaction = session.beginTransaction();
-            session.save(dragon);
+            session.save(elephant);
             transaction.commit();
 
         }
     }
 
 
-
     @Override
-    public Dragon loadById(long id) throws RuntimeException {
-        dragon =  null;
+    public Elephant loadById(long id) throws RuntimeException {
+        elephant = null;
         try (Session session = factory.openSession()) {
-            dragon = session.get(Dragon.class, id);
-            return dragon;
+            elephant = session.get(Elephant.class, id);
+            return elephant;
 
         }
     }
 
     @Override
-    public Dragon update(Dragon dragon) throws RuntimeException {
-        dragon =  null;
+    public Elephant update(Elephant elephant) throws RuntimeException {
+        elephant = null;
 
-        return dragon;
+        return elephant;
     }
 
     @Override
-    public void delete(Dragon dragon) throws RuntimeException {
+    public void delete(Elephant elephant) throws RuntimeException {
 
     }
 
     @Override
-    public Collection<Dragon> getAll() throws RuntimeException {
+    public Collection<Elephant> getAll() throws RuntimeException {
+
         list = new ArrayList();
         try (Session session = factory.openSession()) {
 
             Transaction transaction = session.beginTransaction();
-            String hql = "FROM Dragon";
+            String hql = "FROM Elephant";
             Query query = session.createQuery(hql);
             list = query.list();
 
@@ -74,4 +75,5 @@ public class DragonDAO implements AbstractDAO<Dragon> {
 
     }
 }
+
 
