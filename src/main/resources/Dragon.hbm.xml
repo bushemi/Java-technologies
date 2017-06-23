@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="hibernate.entities.Dragon" table="Dragons">
+      <meta attribute="class-description">
+         This class contains the dracon's details.
+      </meta>
+      <id name="id" type="long" column="id">
+         <generator class="native"/>
+      </id>
+
+      <property name="weight" column="weight" type="int"/>
+      <property name="height" column="height" type="int"/>
+      <property name="maxFlyingTime" column="maxFlyingTime" type="int"/>
+
+
+   </class>
+</hibernate-mapping>
+
+
+
+
+
