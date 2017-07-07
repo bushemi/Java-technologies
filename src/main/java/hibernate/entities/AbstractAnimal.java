@@ -4,9 +4,9 @@ package hibernate.entities;
  * Created by root on 20.06.17.
  */
 public abstract class AbstractAnimal {
-    int weight;
-    int height;
-    long id;
+    int weight=0;
+    int height=0;
+    long id=0;
 
     public long getId() {
         return id;

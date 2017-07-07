@@ -12,4 +12,5 @@ public interface AbstractDAO<T> {
    public T update(T t) throws RuntimeException;
    public void delete(T t) throws RuntimeException;
    public Collection<T> getAll() throws RuntimeException;
+
 }
