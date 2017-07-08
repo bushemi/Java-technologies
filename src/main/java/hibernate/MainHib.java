@@ -19,7 +19,15 @@ public class MainHib {
         service.saveElephant(el);
         List list= (List) service.getAllElephants();
         list.forEach(System.out::println);
-        System.out.println(service.loadElephant(5));
+        service.deleteDragon(d1);
+        service.deleteElephant(el);
+        list= (List) service.getAllDragons();
+        list.forEach(System.out::println);
+        service.updateElephant(el);
+        service.updateDragon(d1);
+        list= (List) service.getAllElephants();
+        list.forEach(System.out::println);
+//        System.out.println("one "+service.loadElephant(5));
         System.out.println("Animals was finished.");
         service.stop();
     }

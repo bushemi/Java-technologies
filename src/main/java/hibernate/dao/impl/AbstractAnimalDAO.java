@@ -51,10 +51,10 @@ abstract class AbstractAnimalDAO<T> implements AbstractDAO<T>{
 
     @Override
     public T update(T t) throws RuntimeException {
-        t =  null;
         try (Session session = factory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            Query query = session.createQuery(hqlUpdateString());
+            String s = hqlUpdateString(t);
+            Query query = session.createQuery(s);
             query.executeUpdate();
             transaction.commit();
         }
@@ -67,14 +67,14 @@ abstract class AbstractAnimalDAO<T> implements AbstractDAO<T>{
     public void delete(T t) throws RuntimeException {
         try (Session session = factory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            Query q = session.createQuery(hqlDeleteQuery());
+            Query q = session.createQuery(hqlDeleteQuery(t));
             q.executeUpdate();
             transaction.commit();
         }
     }
-    abstract String hqlDeleteQuery();
+    abstract String hqlDeleteQuery(T t);
     abstract String hqlGetAll();
-    abstract String hqlUpdateString();
+    abstract String hqlUpdateString(T t);
 
     public Collection<T> getAll() throws RuntimeException {
         list = new ArrayList();

@@ -26,8 +26,8 @@ public class DragonDAO extends AbstractAnimalDAO<Dragon> implements AbstractDAO<
     }
 
     @Override
-    String hqlDeleteQuery() {
-        return "delete Entity where id = X";
+    String hqlDeleteQuery(Dragon dragon) {
+        return "delete Dragon where id < 5";
     }
 
     @Override
@@ -36,9 +36,14 @@ public class DragonDAO extends AbstractAnimalDAO<Dragon> implements AbstractDAO<
     }
 
     @Override
-    String hqlUpdateString() {
-        return "update EntityName set fieldP = 'newValue' "
-                + "where id IN (75, 76)";
+    String hqlUpdateString(Dragon dragon) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("update Dragon set ")
+                .append("maxFlyingTime = '")
+                .append(dragon.getMaxFlyingTime()*10)
+                .append("' where id > 5");
+
+        return sb.toString();
     }
 
 

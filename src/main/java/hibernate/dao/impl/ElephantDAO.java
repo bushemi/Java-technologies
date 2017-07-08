@@ -30,8 +30,8 @@ public class ElephantDAO extends AbstractAnimalDAO<Elephant> implements Abstract
     }
 
     @Override
-    String hqlDeleteQuery() {
-        return "delete Entity where id = X";
+    String hqlDeleteQuery(Elephant elephant) {
+        return "delete Elephant where id in (2,4)";
     }
 
     @Override
@@ -40,9 +40,14 @@ public class ElephantDAO extends AbstractAnimalDAO<Elephant> implements Abstract
     }
 
     @Override
-    String hqlUpdateString() {
-        return "update EntityName set fieldP = 'newValue' "
-                + "where id IN (75, 76)";
+    String hqlUpdateString(Elephant elephant) {
+        StringBuilder sb = new StringBuilder();
+              sb.append("update Elephant set ")
+                .append("earWidth = '")
+                .append(elephant.getEarWidth()+19)
+                .append("' where id > 5");
+
+        return sb.toString();
     }
 
 
